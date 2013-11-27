@@ -220,16 +220,65 @@ time you will automatically have more workers.
 ### Running a PROOF analysis
 
 The macro you use to start an analysis on TAF is different than the
-CAF (for instance you don't need to enable AliRoot there). An example
-macro will be provided soon.
+CAF (for instance you don't need to enable AliRoot there).
 
-Please note that the **PROOF connection string** is:
+The new workflow consists of **opening the PROOF connection** and
+**enabling some AliRoot libraries**. In most cases it is sufficient to
+open ROOT by running `root`, and not `aliroot`.
 
-    TProof::Open("pod://")
+This boils down to the following snippet:
+
+```cpp
+// List of AliRoot parameters
+TList *list = new TList();
+list->Add(new TNamed("ALIROOT_MODE", "AliRoot"));
+list->Add(new TNamed("ALIROOT_EXTRA_LIBS", "OADB:ESD"));
+
+// Open PROOF connection
+TProof::Open("pod://");
+
+// Upload and enable package
+gProof->UploadPackage("AliRoot.par");
+gProof->EnablePackage("AliRoot.par", list);
+```
 
 Datasets have also different names with respect to the CAF. Names used
 here are *semantic*, as extensively explained
 [in the documentation](http://proof.web.cern.ch/proof/TDataSetManagerAliEn.html).
+
+
+#### The AliRoot.par package
+
+Use the `AliRoot.par` package to enalbe and control AliRoot options on
+the client, master and all the workers. Such options include things as
+connecting to AliEn or enabling extra libraries.
+
+> Download the `AliRoot.par` package from [here](extras/AliRoot.par)
+> and place it in your working directory.
+
+Options are passed via `TNamed` objects constituted by two parameters:
+the option name and the option value (both are strings). A `TList` of
+`TNamed` objects is passed as the second argument of the
+`EnablePackage()` function, as seen from the code snippet above.
+
+The following options are available:
+
+*   `ALIROOT_MODE`: set it to `AliRoot`, `sim` or `rec` to
+    respectively load on all workers the macro
+    `$ALICE_ROOT/macros/loadlibs.C`, `loadlibssim.C` or
+    `loadlibsrec.C`.
+*   `ALIROOT_EXTRA_LIBS`: list of colon-separated extra AliRoot
+    libraries to load, such as `OADB:ESD:STEERbase`. Names with or
+    without the leading `lib` are both accepted.
+*   `ALIROOT_EXTRA_INCLUDES`: list of colon-separated extra AliRoot
+    include paths with respect to `$ALICE_ROOT`, such as
+    `STEER:TOF:PWG/FLOW/Base`.
+*   `ALIROOT_ENABLE_ALIEN`: set it to `1` to enable AliEn on all
+    workers - this is needed if you want your workers to access
+    `alien://` files.
+
+**Note**: none of the options is mandatory! Usually, the only option
+you will need to use is `ALIROOT_EXTRA_LIBS`.
 
 
 ### Turn off your PROOF cluster
