@@ -14,7 +14,7 @@ CSS := github.css
 TEMPLATE := template.html
 TITLE_PREFIX := "cloud@torino"
 
-PANDOC_OPTS := -s -S --toc --chapters --number-sections -f markdown -c $(CSS) --template=$(TEMPLATE) --title-prefix=$(TITLE_PREFIX)
+PANDOC_OPTS := -s -S --toc --chapters --number-sections -f markdown -c $(CSS) --template=$(TEMPLATE) --title-prefix=$(TITLE_PREFIX) --toc-depth=4
 PANDOC_OPTS_INDEX := -s -S -f markdown -c $(CSS) --template=$(TEMPLATE)
 
 # Workaround for shitty INFN Web Server overriding UTF-8
