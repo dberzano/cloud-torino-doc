@@ -128,7 +128,7 @@ To select which AliRoot version to use, edit the file
 
 You don't have to worry about the ROOT version since it will be chosen
 automatically according to the compatibility list available on
-[MonALISA](alimonitor.cern.ch/packages/).
+[MonALISA](http://alimonitor.cern.ch/packages/).
 
 
 ### Load the shell environment
