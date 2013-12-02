@@ -75,6 +75,10 @@ You can try if the connection works right afterwards by executing:
 
     ssh cloud-gw-218.to.infn.it
 
+**Note:** the line `ForwardX11Timeout 596h` might not work for some old
+SSH versions: if when connecting via SSH you are presented with a
+message complaining about such line, just omit it.
+
 
 ### Transfer your credentials to the VAF
 
