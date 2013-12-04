@@ -48,14 +48,15 @@ To access the cloud it is sufficient to log in to one of the Linux
 
 Once logged in you may enter the Cloud environment by typing:
 
-    ~berzano/euca2ools/bin/cloud-enter
+    ~berzano/euca2ools/bin/cloud-enter [cloud_user_name]
 
-You'll be prompted for a **username** and a **password**. Keep in mind
-that these are not your INFN credentials, but different credentials
-that you can use solely for accessing the Cloud:
+If you do not provide any `cloud-user-name` you'll be prompted for
+one. A **password** will be asked as well. Keep in mind that these are
+not your INFN credentials, but different credentials that you can use
+solely for accessing the Cloud:
 
-    Your username: <your_username>
-    Your password: <your_password>
+    Cloud user: <your_username>
+    Password for cloud user "<your_username>": <your_password>
     Commands start with euca-*, use [Tab] to complete.
     Type exit to return to your normal shell.
 
