@@ -50,7 +50,7 @@ Once logged in you may enter the Cloud environment by typing:
 
     ~berzano/euca2ools/bin/cloud-enter [cloud_user_name]
 
-If you do not provide any `cloud-user-name` you'll be prompted for
+If you do not provide any `cloud_user_name` you'll be prompted for
 one. A **password** will be asked as well. Keep in mind that these are
 not your INFN credentials, but different credentials that you can use
 solely for accessing the Cloud:
