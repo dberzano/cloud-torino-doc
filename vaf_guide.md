@@ -69,6 +69,7 @@ following lines (copy & paste them, and substitute
       StrictHostKeyChecking no
       ForwardX11 yes
       ForwardX11Timeout 596h
+      ForwardX11Trusted yes
       IdentityFile ~/.globus/userkey.pem
 
 You can try if the connection works right afterwards by executing:
@@ -83,7 +84,8 @@ message complaining about such line, just omit it.
 ### Transfer your credentials to the VAF
 
 In order to connect to AliEn, you must have your user certificate
-private key transferred to the VAF head node. Do so by issuing:
+private key transferred to the VAF head node. Do so by issuing **from
+your laptop's terminal** (and **not** from the SSH session):
 
     rsync -av ~/.globus/ cloud-gw-218.to.infn.it:.globus/
 
