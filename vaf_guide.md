@@ -295,6 +295,94 @@ cluster to free resources:
     vafctl --stop
 
 
+### Keeping the PROOF analysis running if the connection fails
+
+If your network connectivity has problems, it might happen that the
+SSH connection to the VAF fails in the middle of a PROOF analysis: to
+prevent losing your work, you can use `screen`.
+
+Another common use case of `screen` is whenever you start your
+analysis from your office's network, then you want to reconnect from
+home: with `screen` it is possible to "detach" a session, let it
+continue in the background and "reattach" it whenever you want.
+
+A quickstart with the most common `screen` commands and operations is
+presented. If you need further information, have a look at the
+official [screen documentation](http://www.gnu.org/software/screen/manual/screen.html).
+
+
+#### Creating a new screen
+
+You can think of screens as "terminals inside other terminals". After
+you have connected to the VAF via SSH, do, **inside the remote
+session's shell and not from your laptop's terminal**:
+
+    screen -S anyNameYouWant
+
+where quite intuitively you'll substitute `anyNameYouWant` with any
+name you want.
+
+A new "session inside a session" is opened: from this session you can
+continue your work.
+
+
+#### Start a ROOT session inside a screen
+
+In order to benefit from session detaching, you **must** start your
+ROOT session **in batch mode**, *i.e.* with no graphical interface. To
+do that, simply append `-b` to your `root` (or `aliroot`) command:
+
+    root -b
+
+From this point on, if you are inside a screen, your ROOT and PROOF
+session are "protected": if the connection fails, you'll be able to
+reconnect and resume your work.
+
+
+#### Detach a screen
+
+In case you would like to "detach" a screen manually, from inside a
+screen you should press:
+
+    Ctrl + A + D
+
+meaning that, while keeping the `Ctrl` key pressed, you will press and
+release, in an orderly fashion, first `A`, then `D`.
+
+
+#### List and attach existing screens
+
+If you want to reconnect to an existing screen session, list your
+currently available screens before:
+
+    screen -ls
+
+You'll be presented with an output similar to:
+
+    There is a screen on:
+      1857.JPsiAnalysis (Detached)
+    1 Socket in /var/run/screen/S-dberzano.
+
+In this case there is only one named screen, that you can connect to
+by typing:
+
+    screen -rd JPsiAnalysis
+
+If you have only one session, you can avoid to specify the name:
+
+    screen -rd JPsiAnalysis
+
+If you have multiple sessions with the same name, you can use the
+session ID (*i.e.*, the number right before the screen's name in
+`screen -ls`):
+
+    screen -rd 1857
+
+**Note:** keep in mind that you cannot attach a screen from inside
+another screen. Be sure to detach your current screen before attaching
+a new one.
+
+
 ### Troubleshooting
 
 Unlike the CAF, in case of problems (PROOF hangups, unexpected
