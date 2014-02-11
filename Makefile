@@ -25,7 +25,8 @@ ICONV := recode -d ..html
 INPUT_MDS := \
     admin_guide.md \
     user_guide.md \
-    vaf_guide.md
+    vaf_guide.md \
+    vaf_data.md
 
 INDEX_MD := index.md
 INDEX_HTML := index.html
