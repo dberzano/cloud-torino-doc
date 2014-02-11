@@ -84,7 +84,7 @@ privileges if you want to commit changes.
 
 Syntax:
 
-```{.sh}
+```bash
 onevrouter-generator.rb \
   --username clouduser --public-ip 193.205.66.216 \
   --priv-ip 172.16.XXX.0/24 [--[no-]commit]
@@ -113,7 +113,7 @@ printed on screen.
 
 See how to use it below:
 
-```{.sh}
+```bash
 $> onevrouter-generator.rb --username clouduser --public-ip 193.205.66.216 --priv-ip 172.16.216.0/24
 ```
 
