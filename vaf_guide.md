@@ -122,26 +122,40 @@ and you'll be in.
 "token" using the web browser and the provided link.
 
 
-### Choose your AliRoot version
+### Configuration file: choose the AliRoot version
 
-Once you are in, you are in an environment where all AliRoot versions
-available on the Grid can be used out of the box.
+Once you are connected via SSH to the Virtual Analysis Facility you
+are in an environment where all the AliRoot versions available on the
+Grid can be used.
 
 To select which AliRoot version to use, edit the file
-`~/.vaf/common.before` and set the following variable appropriately:
+`~/.vaf/vaf.conf` and set the following variable appropriately:
 
-    export VafAliRootVersion='v5-05-38-AN'
+    export VafAliRootVersion='v5-05-77-AN'
 
-You don't have to worry about the ROOT version since it will be chosen
-automatically according to the compatibility list available on
-[MonALISA](http://alimonitor.cern.ch/packages/).
+In case this file does not exist (for instance if it is the first)
+time you connect) just run:
+
+    vaf-enter
+
+and it will generate a default configuration file that you can edit
+afterwards.
+
+The official list of available AliRoot versions is available on
+[MonALISA](http://alimonitor.cern.ch/packages/): specify it
+**without** the initial `VO_ALICE@AliRoot::` string. The appropriate
+ROOT dependency will be automatically set.
 
 
 ### Load the shell environment
 
-Simply enter the environment by typing:
+Enter the environment by typing:
 
     vaf-enter
+
+In case you haven't provided any configuration file, it will generate
+a template one in `~/.vaf/vaf.conf` and exit immediately. Edit it
+according to the instructions in the previous paragraph.
 
 This opens a new shell. To "clean" the environment, simply exit by
 typing:
