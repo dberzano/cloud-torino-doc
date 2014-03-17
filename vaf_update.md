@@ -50,6 +50,7 @@ command:
       /tmp/vaf-home/ \
       --exclude '*/.proof' \
       --exclude '*/.PoD' \
+      --exclude '*/PoDServer' \
       --exclude '**/cloud-user'
 
 If the operation is successful you will end up with a copy of the sole
