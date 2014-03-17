@@ -264,7 +264,7 @@ gProof->EnablePackage("AliRoot.par", list);
 
 Datasets have also different names with respect to the CAF. Names used
 here are *semantic*, as extensively explained
-[in the documentation](http://proof.web.cern.ch/proof/TDataSetManagerAliEn.html).
+[in the documentation](vaf_alien_datasets.html).
 
 
 #### The AliRoot.par package

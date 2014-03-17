@@ -51,7 +51,7 @@ This is a step-by-step howto to stage data on the Torino Virtual
 Analysis Facility: please follow it closely.
 
 The dataset name format is illustrated
-[here](http://proof.web.cern.ch/proof/TDataSetManagerAliEn.html).
+[here](vaf_alien_datasets.html).
 
 
 ### Connect to pmaster.to.infn.it

@@ -26,6 +26,7 @@ INPUT_MDS := \
     admin_guide.md \
     user_guide.md \
     vaf_guide.md \
+    vaf_alien_datasets.md \
     vaf_data.md \
     vaf_update.md
 
