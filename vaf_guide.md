@@ -397,6 +397,34 @@ another screen. Be sure to detach your current screen before attaching
 a new one.
 
 
+### A sample analysis
+
+To test the Virtual Analysis Facility, you can download
+[this simple test analysis](extras/SimplePtTestOnPoD.tar.bz2) and
+unpack it on your home directory on the VAF:
+
+    tar xjvvf SimplePtTestOnPoD.tar.bz2
+    cd SimplePtTestOnPoD/
+
+The steering macro is `RunPoD.C`: you will notice that there is no
+selection of the AliRoot or ROOT version since they were already
+selected consistently by editing the `~/.vaf/vaf.conf` file.
+
+To run it from the VAF environment:
+
+    vafctl stop
+    vafctl start
+    vafreq <num_of_workers>
+
+Wait for a certain number of available workers (you can check with
+`vafcount`), then run:
+
+    root RunPoD.C
+
+The analysis will show an histogram and will produce the usual
+`AnalysisResults.root` file.
+
+
 ### Troubleshooting
 
 Unlike the CAF, in case of problems (PROOF hangups, unexpected
