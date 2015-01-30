@@ -154,8 +154,8 @@ Enter the environment by typing:
     vaf-enter
 
 In case you haven't provided any configuration file, it will generate
-a template one in `~/.vaf/vaf.conf` and exit immediately. Edit it
-according to the instructions in the previous paragraph.
+a sample configuration in `~/.vaf/vaf.conf` and exit immediately. Edit
+it according to the instructions in the previous paragraph.
 
 This opens a new shell. To "clean" the environment, simply exit by
 typing:
