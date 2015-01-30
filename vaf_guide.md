@@ -258,23 +258,29 @@ list->Add(new TNamed("ALIROOT_EXTRA_LIBS", "OADB:ESD"));
 TProof::Open("pod://");
 
 // Upload and enable package
-gProof->UploadPackage("AliRoot.par");
-gProof->EnablePackage("AliRoot.par", list);
+TFile::Cp("http://personalpages.to.infn.it/~berzano/cloud/extras/AliceVaf.par", "AliceVaf.par");
+gProof->UploadPackage("AliceVaf.par");
+gProof->EnablePackage("AliceVaf.par", list);
 ```
+
+The `TFile::Cp()` part ensures that you are always using the most updated
+version of the package, but it can also be omitted if you want.
 
 Datasets have also different names with respect to the CAF. Names used
 here are *semantic*, as extensively explained
 [in the documentation](vaf_alien_datasets.html).
 
 
-#### The AliRoot.par package
+#### The AliceVaf.par package
 
-Use the `AliRoot.par` package to enalbe and control AliRoot options on
+Use the `AliceVaf.par` package to enalbe and control AliRoot options on
 the client, master and all the workers. Such options include things as
 connecting to AliEn or enabling extra libraries.
 
-> Download the `AliRoot.par` package from [here](extras/AliRoot.par)
-> and place it in your working directory.
+> Download the `AliceVaf.par` package from [here](extras/AliceVaf.par)
+> and place it in your working directory. Or just use the `TFile::Cp()`
+> in the example from the previous paragraph to have always the most
+> recent version.
 
 Options are passed via `TNamed` objects constituted by two parameters:
 the option name and the option value (both are strings). A `TList` of
