@@ -219,13 +219,13 @@ provided.
 
 This is the command format:
 
-    Find;BasePath=<BASEPATH>;FileName=<FILENAME>;Anchor=<ANCHOR>;TreeName=<TREENAME>;Regexp=<REGEXP>
+    Find;BasePath=<BASEPATH>;FileName=<FILENAME>;Anchor=<ANCHOR>;Tree=<TREENAME>;Regexp=<REGEXP>
 
 Parameters `BasePath` and `FileName` are passed as-is to the AliEn [find
 command](http://alien2.cern.ch/index.php?option=com_content&view=article&id=53&Itemid=99#Searching_for_files),
 and are mandatory.
 
-Parameters `Anchor`, `TreeName` and `Regexp` are optional.
+Parameters `Anchor`, `Tree` and `Regexp` are optional.
 
 Here's a detailed description of the parameters.
 
@@ -267,7 +267,7 @@ Anchor *(optional)*
     > cases (*i.e.*, to save space) and only when one is completely sure
     > that no external files in the archive are required for analysis.
 
-TreeName *(optional)*
+Tree *(optional)*
 :   Name of each file's default tree.
 
     Examples of valid values are: `/aodTree`, `/esdTree`, `/myCustomTree`,
