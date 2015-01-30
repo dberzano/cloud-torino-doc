@@ -122,16 +122,28 @@ and you'll be in.
 "token" using the web browser and the provided link.
 
 
-### Configuration file: choose the AliRoot version
+### Configuration file: choose the AliRoot Core or AliPhysics version
 
 Once you are connected via SSH to the Virtual Analysis Facility you
-are in an environment where all the AliRoot versions available on the
-Grid can be used.
+are in an environment where all the AliRoot Core and AliPhysics
+versions available on the Grid can be used.
 
-To select which AliRoot version to use, edit the file
+To select which AliRoot Core version to use, edit the file
 `~/.vaf/vaf.conf` and set the following variable appropriately:
 
-    export VafAliRootVersion='v5-05-77-AN'
+    export VafAliRootVersion='v5-06-02'
+
+If you want to use AliPhysics instead:
+
+    export VafAliPhysicsVersion='vAN-20150129'
+
+Please note that:
+
+*   if you export **only** `VafAliRootVersion`, AliPhysics and all of its
+    variables will not be available;
+*   if you export `VafAliPhysicsVersion`, the variable `VafAliRootVersion` will
+    be ignored, as the appropriate AliRoot Core version will be automatically
+    selected as a dependency.
 
 In case this file does not exist (for instance if it is the first)
 time you connect) just run:
@@ -141,10 +153,25 @@ time you connect) just run:
 and it will generate a default configuration file that you can edit
 afterwards.
 
-The official list of available AliRoot versions is available on
-[MonALISA](http://alimonitor.cern.ch/packages/): specify it
-**without** the initial `VO_ALICE@AliRoot::` string. The appropriate
-ROOT dependency will be automatically set.
+The configuration file is very simple, and quite self-documented: if you mess
+up with the configuration, just remove it and start `vaf-enter` again to
+recreate it:
+
+    rm -rf ~/.vaf/
+    vaf-enter
+
+The official list of available AliRoot Core and AliPhysics versions is available
+on [MonALISA](http://alimonitor.cern.ch/packages/):
+
+*   set `VafAliRootVersion` without specifying `VO_ALICE@AliRoot::`
+*   set `VafAliPhysicsVersion` without specifying `VO_ALICE@AliPhysics::`
+
+You can **either** set AliRoot **or** AliPhysics. Dependencies are automatically
+set, so:
+
+*   if you set **AliRoot Core**, the appropriate ROOT version is loaded as well
+*   if you set **AliPhysics**, the appropriate AliRoot Core and ROOT versions
+    are loaded
 
 
 ### Load the shell environment
